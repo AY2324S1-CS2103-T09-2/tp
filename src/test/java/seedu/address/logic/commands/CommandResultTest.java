@@ -19,6 +19,10 @@ public class CommandResultTest {
         // same object -> returns true
         assertTrue(commandResult.equals(commandResult));
 
+        // null -> returns false
+        assertFalse(commandResult.equals(null));
+
+        // different types -> returns false
         assertFalse(commandResult.equals(0.5f));
 
         // different feedbackToUser value -> returns false
@@ -52,6 +56,7 @@ public class CommandResultTest {
         assertNotEquals(commandResult.hashCode(), new CommandResult("feedback", false, true,
                 TabIndex.Developer).hashCode());
     }
+
     @Test
     public void toStringMethod() {
         CommandResult commandResult = new CommandResult("feedback", TabIndex.Developer);

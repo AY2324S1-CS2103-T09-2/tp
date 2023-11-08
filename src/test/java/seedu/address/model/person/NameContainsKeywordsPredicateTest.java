@@ -77,9 +77,10 @@ public class NameContainsKeywordsPredicateTest {
         assertFalse(predicate.test(new DeveloperBuilder().withName("Alice Bob").build()));
 
         // Keywords match phone, email and address, but does not match name
-        predicate = new NameDeveloperContainsKeywordsPredicate(Arrays.asList("12345454", "alice@email.com",
-                "Main", "Street"));
-        assertFalse(predicate.test(new DeveloperBuilder().withName("Alice").withPhone("12345454")
+        predicate =
+                new NameDeveloperContainsKeywordsPredicate(Arrays.asList("12345",
+                        "alice@email.com", "Main", "Street"));
+        assertFalse(predicate.test(new DeveloperBuilder().withName("Alice").withPhone("12345")
                 .withEmail("alice@email.com").withAddress("Main Street").build()));
     }
 
@@ -88,8 +89,8 @@ public class NameContainsKeywordsPredicateTest {
         List<String> keywords = List.of("keyword1", "keyword2");
         NameDeveloperContainsKeywordsPredicate predicate = new NameDeveloperContainsKeywordsPredicate(keywords);
 
-        String expected = NameDeveloperContainsKeywordsPredicate.class.getCanonicalName() + "{keywords="
-                + keywords + "}";
+        String expected =
+                NameDeveloperContainsKeywordsPredicate.class.getCanonicalName() + "{keywords=" + keywords + "}";
         assertEquals(expected, predicate.toString());
     }
 }
